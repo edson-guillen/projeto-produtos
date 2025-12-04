@@ -1,0 +1,73 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* DARK MODE — DESATIVADO (causava conflito) */
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+
+/* ===================== */
+/*  iOS GLOBAL STYLING   */
+/* ===================== */
+body {
+  background: red !important;
+}
+/* FUNDO DO APP */
+ion-content::part(background) {
+  background: #f2f2f7 !important;
+}
+
+/* TOOLBAR iOS */
+ion-toolbar::part(container) {
+  background: #ffffff !important;
+  border-bottom: 1px solid #dcdcdc !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06) !important;
+}
+
+ion-title {
+  font-weight: 700;
+  color: #000 !important;
+}
+
+/* LIST ITEMS iOS */
+ion-item::part(native) {
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08) !important;
+  padding: 10px !important;
+}
+
+/* TEXTO */
+ion-item h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000 !important;
+}
+
+ion-item p {
+  font-size: .95rem;
+  color: #8e8e93 !important;
+}
+
+/* BOTÕES */
+ion-button {
+  --border-radius: 10px;
+}

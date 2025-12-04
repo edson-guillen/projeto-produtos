@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Produtos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="edit()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list>
+    <ion-item *ngFor="let p of products">
+      <ion-label>
+        <h2>{{ p.name }}</h2>
+        <p>{{ p.brand }} - R$ {{ p.price }}</p>
+      </ion-label>
+
+      <ion-button fill="clear" (click)="edit(p.id)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" fill="clear" (click)="remove(p.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

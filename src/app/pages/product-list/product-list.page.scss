@@ -1,0 +1,76 @@
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+/* Estilo da Toolbar iOS */
+ion-toolbar {
+  --background: #ffffff;
+  --border-color: #dcdcdc;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+ion-title {
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+/* Botão de adicionar */
+ion-buttons ion-button {
+  --color: var(--ion-color-primary);
+  font-size: 1.4rem;
+}
+
+/* LISTA iOS STYLE */
+ion-list {
+  background: transparent;
+  padding: 0 6px;
+}
+/* Animação suave */
+ion-item:hover {
+  transform: scale(1.02);
+  transition: transform 0.15s ease;
+}
+
+/* item estilo cartão iOS App Store */
+ion-item {
+  --background: #ffffff;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  padding: 8px 10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease;
+}
+
+ion-item:hover {
+  transform: scale(1.02);
+}
+
+/* TÍTULO DO PRODUTO */
+ion-item h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ion-text-color);
+  margin-bottom: 4px;
+}
+
+/* Subtexto / marca + preço */
+ion-item p {
+  color: #8e8e93;
+  font-size: 0.95rem;
+}
+
+/* Botões de ação */
+ion-item ion-button {
+  margin-left: 6px;
+  font-size: 1.3rem;
+}
+
+/* Ícones */
+ion-icon {
+  color: var(--ion-text-color);
+  font-size: 1.4rem;
+}
+
+ion-button[color="danger"] ion-icon {
+  color: #ff3b30;
+}
