@@ -1,21 +1,47 @@
 {
-  "name": "api-produtos",
-  "version": "1.0.0",
-  "description": "API CRUD de produtos eletrônicos para o app Angular/Ionic",
-  "main": "server.js",
+  "name": "projeto-produtos",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "dependencies": {
-    "body-parser": "^2.2.1",
-    "cors": "^2.8.5",
-    "express": "^4.22.1",
-    "lowdb": "^6.0.1",
-    "nanoid": "^4.0.0",
-    "uuid": "^13.0.0"
+    "@angular/animations": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@ionic/angular": "^7.8.4",
+    "ionicons": "^7.1.2",
+    "rxjs": "~7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "~0.14.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "@angular-devkit/build-angular": "^17.3.1",
+    "@angular-eslint/builder": "^17.2.1",
+    "@angular-eslint/eslint-plugin": "^17.2.1",
+    "@angular-eslint/eslint-plugin-template": "^17.2.1",
+    "@angular-eslint/template-parser": "^17.2.1",
+    "@angular/cli": "^17.3.1",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/jasmine": "~5.1.4",
+    "@types/node": "^20.12.7",
+    "eslint": "^8.57.0",
+    "jasmine-core": "~5.2.0",
+    "karma": "~6.4.3",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.1",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.4.2"
   }
 }

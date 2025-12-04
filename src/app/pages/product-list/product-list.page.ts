@@ -40,4 +40,33 @@ export class ProductListPage implements OnInit {
     if (confirm("Excluir produto?"))
       this.api.delete(id).subscribe(() => this.load());
   }
+
+  get totalProducts() {
+    return this.products.length;
+  }
+
+  get totalStock() {
+    return this.products.reduce((total, product) => {
+      return total + this.toNumber(product?.stock);
+    }, 0);
+  }
+
+  get inventoryWorth() {
+    return this.products.reduce((total, product) => {
+      const price = this.toNumber(product?.price);
+      const stock = this.toNumber(product?.stock) || 1;
+      return total + price * stock;
+    }, 0);
+  }
+
+  private toNumber(value: unknown): number {
+    if (typeof value === 'number') {
+      return isNaN(value) ? 0 : value;
+    }
+    if (typeof value === 'string') {
+      const parsed = parseFloat(value);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
+  }
 }

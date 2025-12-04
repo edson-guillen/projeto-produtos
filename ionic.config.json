@@ -1,4 +1,9 @@
 {
   "name": "projeto-produtos",
-  "type": "angular"
+  "type": "angular",
+  "integrations": {
+    "angular": {
+      "project": "app"
+    }
+  }
 }

@@ -19,55 +19,41 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/* DARK MODE — DESATIVADO (causava conflito) */
-/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+  --brand-primary: #1f6feb;
+  --brand-secondary: #22c55e;
+  --brand-accent: #0ea5e9;
+  --brand-surface: #eef4fb;
+  --brand-card: #ffffff;
+  --brand-text: #0f172a;
+}
 
-/* ===================== */
-/*  iOS GLOBAL STYLING   */
-/* ===================== */
 body {
-  background: red !important;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--brand-surface);
+  color: var(--brand-text);
 }
-/* FUNDO DO APP */
+
 ion-content::part(background) {
-  background: #f2f2f7 !important;
+  background: var(--brand-surface);
 }
 
-/* TOOLBAR iOS */
-ion-toolbar::part(container) {
-  background: #ffffff !important;
-  border-bottom: 1px solid #dcdcdc !important;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06) !important;
+ion-card {
+  background: var(--brand-card);
 }
 
-ion-title {
-  font-weight: 700;
-  color: #000 !important;
+ion-toolbar {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
-/* LIST ITEMS iOS */
-ion-item::part(native) {
-  background: #ffffff !important;
-  border-radius: 18px !important;
-  margin-bottom: 14px !important;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08) !important;
-  padding: 10px !important;
-}
-
-/* TEXTO */
-ion-item h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #000 !important;
-}
-
-ion-item p {
-  font-size: .95rem;
-  color: #8e8e93 !important;
-}
-
-/* BOTÕES */
 ion-button {
-  --border-radius: 10px;
+  --border-radius: 16px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+ion-chip {
+  --border-radius: 999px;
 }
