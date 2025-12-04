@@ -1,109 +1,82 @@
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Catálogo de Produtos</ion-title>
-    <ion-buttons slot="end">
-      <ion-button fill="clear" (click)="load()">
-        <ion-icon slot="start" name="refresh-outline"></ion-icon>
-        Atualizar
-      </ion-button>
-      <ion-button color="secondary" (click)="edit()">
-        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
-        Novo produto
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="page-bg" fullscreen="true">
+<div class="catalogo-page">
+  <header class="catalogo-header">
+    <h1>Catálogo de Produtos</h1>
+    <div class="header-actions">
+      <button class="btn ghost" type="button" (click)="load()">Atualizar</button>
+      <button class="btn primary" type="button" (click)="edit()">Novo produto</button>
+    </div>
+  </header>
 
-<ion-content class="page-bg">
-  <section class="hero">
-    <div class="hero__text">
-      <p class="eyebrow">Painel inteligente</p>
-      <h1>Gerencie seu estoque com elegância</h1>
-      <p class="subtitle">
-        Revise rapidamente valores, estoque disponível e atualize seu catálogo com apenas um clique.
-      </p>
-      <div class="hero__actions">
-        <ion-button color="primary" (click)="edit()">
-          <ion-icon slot="start" name="sparkles-outline"></ion-icon>
+  <section class="hero-card">
+    <div class="hero-card__copy">
+      <p class="hero-eyebrow">Painel Inteligente</p>
+      <h2>Gerencie seu estoque com elegância</h2>
+      <p>Revise rapidamente valores, estoque disponível e atualize seu catálogo com apenas um clique.</p>
+      <div class="hero-actions">
+        <button class="btn light" type="button" (click)="edit()">
+          <span class="material-icons">add</span>
           Adicionar produto
-        </ion-button>
-        <ion-button fill="outline" color="light" (click)="load()">
-          <ion-icon slot="start" name="pulse-outline"></ion-icon>
+        </button>
+        <button class="btn outline" type="button" (click)="load()">
+          <span class="material-icons">sync</span>
           Sincronizar
-        </ion-button>
+        </button>
       </div>
     </div>
-    <div class="hero__badge">
-      <ion-icon name="cube-outline"></ion-icon>
-    </div>
+    <div class="hero-badge">+</div>
   </section>
 
-  <section class="stats-grid">
-    <div class="stat-card">
-      <ion-icon name="layers-outline"></ion-icon>
-      <div>
-        <p>Produtos ativos</p>
-        <h3>{{ totalProducts }}</h3>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <ion-icon name="options-outline"></ion-icon>
-      <div>
-        <p>Itens em estoque</p>
-        <h3>{{ totalStock }}</h3>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <ion-icon name="cash-outline"></ion-icon>
-      <div>
-        <p>Valor estimado</p>
-        <h3>{{ inventoryWorth | currency: 'BRL':'symbol':'1.2-2' }}</h3>
-      </div>
-    </div>
+  <section class="stats">
+    <article class="stat">
+      <p>Produtos ativos</p>
+      <strong>{{ totalProducts }}</strong>
+    </article>
+    <article class="stat">
+      <p>Itens em estoque</p>
+      <strong>{{ totalStock }}</strong>
+    </article>
+    <article class="stat">
+      <p>Valor estimado</p>
+      <strong>{{ inventoryWorth | currency:'BRL':'symbol':'1.2-2' }}</strong>
+    </article>
   </section>
 
-  <section class="product-grid">
-    <ion-card class="product-card" *ngFor="let p of products">
-      <div class="product-card__header">
+  <section *ngIf="products.length; else vazio" class="product-grid">
+    <article class="product-card" *ngFor="let p of products">
+      <div class="product-card__heading">
         <div>
-          <ion-chip color="light" *ngIf="p.brand">
-            <ion-icon name="pricetag-outline"></ion-icon>
-            <ion-label>{{ p.brand }}</ion-label>
-          </ion-chip>
-          <h2>{{ p.name }}</h2>
+          <span class="product-brand" *ngIf="p.brand">{{ p.brand }}</span>
+          <h3>{{ p.name }}</h3>
         </div>
-        <ion-badge color="success">{{ p.stock || 0 }} un.</ion-badge>
+        <span class="pill">{{ p.stock || 0 }} un.</span>
       </div>
 
       <p class="product-card__description" *ngIf="p.description">{{ p.description }}</p>
 
       <div class="product-card__footer">
         <div class="price">
-          <small>Preço unitário</small>
-          <strong>{{ p.price | currency: 'BRL':'symbol':'1.2-2' }}</strong>
+          <span>Preço unitário</span>
+          <strong>{{ p.price | currency:'BRL':'symbol':'1.2-2' }}</strong>
         </div>
-
-        <div class="card-actions">
-          <ion-button size="small" fill="outline" color="primary" (click)="edit(p.id)">
-            <ion-icon slot="start" name="create-outline"></ion-icon>
-            Editar
-          </ion-button>
-          <ion-button size="small" color="danger" fill="solid" (click)="remove(p.id)">
-            <ion-icon slot="start" name="trash-outline"></ion-icon>
-            Excluir
-          </ion-button>
+        <div class="card-buttons">
+          <button class="btn small ghost" type="button" (click)="edit(p.id)">Editar</button>
+          <button class="btn small danger" type="button" (click)="remove(p.id)">Excluir</button>
         </div>
       </div>
-    </ion-card>
+    </article>
+  </section>
 
-    <div class="empty-state" *ngIf="products.length === 0">
-      <ion-icon name="search-outline"></ion-icon>
+  <ng-template #vazio>
+    <section class="empty-card">
+      <div class="empty-icon">
+        <span class="material-icons">inventory_2</span>
+      </div>
       <h3>Nenhum produto encontrado</h3>
       <p>Adicione seu primeiro item para começar a controlar o catálogo.</p>
-      <ion-button color="secondary" (click)="edit()">Cadastrar produto</ion-button>
-    </div>
-  </section>
+      <button class="btn primary" type="button" (click)="edit()">Cadastrar produto</button>
+    </section>
+  </ng-template>
+</div>
 </ion-content>

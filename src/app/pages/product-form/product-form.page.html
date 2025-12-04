@@ -1,188 +1,101 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/product-list"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ id === "new" ? "Novo Produto" : "Editar Produto" }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="page-bg" fullscreen="true">
+<div class="produto-form">
+  <header class="form-top">
+    <a routerLink="/product-list">
+      <span class="material-icons">arrow_back</span>
+      <span>{{ id === 'new' ? 'Novo Produto' : 'Editar Produto' }}</span>
+    </a>
+  </header>
 
-<ion-content class="form-page">
-  <div class="form-wrapper">
-
-    <section class="hero hero--compact">
-      <div class="hero__text">
-        <p class="eyebrow">{{ id === "new" ? "Cadastro rápido" : "Atualização" }}</p>
-        <h1>{{ id === "new" ? "Adicione um novo item ao catálogo" : "Revise as informações do produto" }}</h1>
-        <p>
-          Posicione os dados de forma estratégica e mantenha o inventário sempre sincronizado com seu estoque físico.
-        </p>
-        <div class="hero__status">
-          <ion-chip color="light">
-            <ion-icon name="cloud-done-outline"></ion-icon>
-            <ion-label>Sincronizado com a nuvem</ion-label>
-          </ion-chip>
-          <ion-chip color="success">
-            <ion-icon name="shield-checkmark-outline"></ion-icon>
-            <ion-label>{{ id === "new" ? "Modo criação" : "Modo edição" }}</ion-label>
-          </ion-chip>
-        </div>
+  <section class="form-hero">
+    <div>
+      <p class="hero-label">{{ id === 'new' ? 'Cadastro rápido' : 'Atualização' }}</p>
+      <h1>{{ id === 'new' ? 'Adicione um novo item ao catálogo' : 'Revise as informações do produto' }}</h1>
+      <p>Posicione os dados de forma estratégica e mantenha o inventário sempre sincronizado com seu estoque físico.</p>
+      <div class="hero-meta">
+        <span><span class="material-icons">cloud_done</span> Sincronizado com a nuvem</span>
+        <span><span class="material-icons">auto_awesome</span> {{ id === 'new' ? 'Modo criação' : 'Modo edição' }}</span>
       </div>
-      <div class="hero__badge">
-        <ion-icon name="construct-outline"></ion-icon>
-        <span>{{ id === "new" ? "Novo" : "Edição" }}</span>
-      </div>
-    </section>
-
-    <section class="overview-cards">
-      <div class="overview-card">
-        <ion-icon name="cube-outline"></ion-icon>
-        <div>
-          <p>Produto</p>
-          <h3>{{ product.name || 'Novo produto' }}</h3>
-        </div>
-      </div>
-      <div class="overview-card">
-        <ion-icon name="pricetag-outline"></ion-icon>
-        <div>
-          <p>Marca</p>
-          <h3>{{ product.brand || 'Sem marca' }}</h3>
-        </div>
-      </div>
-      <div class="overview-card">
-        <ion-icon name="cash-outline"></ion-icon>
-        <div>
-          <p>Preço previsto</p>
-          <h3>{{ product.price || 0 | currency:'BRL':'symbol':'1.2-2' }}</h3>
-        </div>
-      </div>
-    </section>
-
-    <ion-grid class="form-grid">
-      <ion-row>
-        <ion-col size="12" sizeLg="6">
-
-          <ion-card class="glass-card">
-            <ion-card-header>
-              <ion-card-subtitle>Identificação</ion-card-subtitle>
-              <ion-card-title>Dados principais</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content class="card-fields">
-              <div class="input-shell">
-                <ion-icon name="cube-outline"></ion-icon>
-                <ion-input class="form-input"
-                  label="Nome do produto *"
-                  labelPlacement="floating"
-                  fill="outline"
-                  [(ngModel)]="product.name"
-                  placeholder="Ex.: Headset sem fio">
-                </ion-input>
-              </div>
-
-              <div class="input-shell">
-                <ion-icon name="pricetag-outline"></ion-icon>
-                <ion-input class="form-input"
-                  label="Marca"
-                  labelPlacement="floating"
-                  fill="outline"
-                  [(ngModel)]="product.brand"
-                  placeholder="Ex.: HyperX">
-                </ion-input>
-              </div>
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card class="glass-card">
-            <ion-card-header>
-              <ion-card-subtitle>Estoque e precificação</ion-card-subtitle>
-              <ion-card-title>Valores e unidades</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content class="card-fields">
-              <div class="inline-fields">
-                <div class="input-shell">
-                  <ion-icon name="cash-outline"></ion-icon>
-                  <ion-input class="form-input"
-                    type="number"
-                    inputmode="decimal"
-                    label="Preço (R$)"
-                    labelPlacement="floating"
-                    fill="outline"
-                    [(ngModel)]="product.price"
-                    placeholder="0,00">
-                  </ion-input>
-                </div>
-
-                <div class="input-shell">
-                  <ion-icon name="options-outline"></ion-icon>
-                  <ion-input class="form-input"
-                    type="number"
-                    inputmode="numeric"
-                    label="Estoque"
-                    labelPlacement="floating"
-                    fill="outline"
-                    [(ngModel)]="product.stock"
-                    placeholder="0">
-                  </ion-input>
-                </div>
-              </div>
-            </ion-card-content>
-          </ion-card>
-
-        </ion-col>
-
-        <ion-col size="12" sizeLg="6">
-          <ion-card class="glass-card description-card">
-            <ion-card-header>
-              <ion-card-subtitle>Conteúdo</ion-card-subtitle>
-              <ion-card-title>Descrição detalhada</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content class="card-fields">
-              <div class="input-shell textarea-shell">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <ion-textarea
-                  class="form-input"
-                  auto-grow="true"
-                  rows="5"
-                  label="Descrição"
-                  labelPlacement="floating"
-                  fill="outline"
-                  [(ngModel)]="product.description"
-                  placeholder="Conte um pouco sobre as principais características.">
-                </ion-textarea>
-              </div>
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card class="glass-card tips-card">
-            <ion-card-header>
-              <ion-card-subtitle>Checklist</ion-card-subtitle>
-              <ion-card-title>Boas práticas</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ul>
-                <li>Utilize títulos curtos e marcantes.</li>
-                <li>Informe o estoque real para evitar rupturas.</li>
-                <li>Mantenha descrições objetivas e atrativas.</li>
-              </ul>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <div class="form-actions">
-      <ion-button color="primary" (click)="save()">
-        <ion-icon slot="start" name="save-outline"></ion-icon>
-        Salvar alterações
-      </ion-button>
-
-      <ion-button routerLink="/product-list" fill="clear" color="medium">
-        Cancelar
-      </ion-button>
     </div>
+    <div class="hero-tag">{{ id === 'new' ? 'Novo' : 'Edição' }}</div>
+  </section>
 
-  </div>
+  <section class="summary">
+    <article>
+      <p>Produto</p>
+      <strong>{{ product.name || 'Novo produto' }}</strong>
+    </article>
+    <article>
+      <p>Marca</p>
+      <strong>{{ product.brand || 'Sem marca' }}</strong>
+    </article>
+    <article>
+      <p>Preço previsto</p>
+      <strong>{{ product.price || 0 | currency:'BRL':'symbol':'1.2-2' }}</strong>
+    </article>
+  </section>
+
+  <section class="form-panel">
+    <form (ngSubmit)="save()" autocomplete="off">
+      <div class="form-columns">
+        <div class="form-section">
+          <div>
+            <h3>Identificação</h3>
+            <small>Dados principais</small>
+          </div>
+          <label>
+            Nome do produto *
+            <input type="text" [(ngModel)]="product.name" name="name" placeholder="Ex.: Headset sem fio">
+          </label>
+          <label>
+            Marca
+            <input type="text" [(ngModel)]="product.brand" name="brand" placeholder="Ex.: HyperX">
+          </label>
+
+          <div>
+            <h3>Estoque e precificação</h3>
+            <small>Valores e unidades</small>
+          </div>
+          <div class="dual-input">
+            <label>
+              Preço (R$)
+              <input type="number" step="0.01" [(ngModel)]="product.price" name="price">
+            </label>
+            <label>
+              Estoque
+              <input type="number" [(ngModel)]="product.stock" name="stock">
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div>
+            <h3>Conteúdo</h3>
+            <small>Descrição detalhada</small>
+          </div>
+          <label>
+            Descrição
+            <textarea rows="6" [(ngModel)]="product.description" name="description"
+              placeholder="Conte um pouco sobre as principais características."></textarea>
+          </label>
+
+          <div>
+            <h3>Checklist</h3>
+            <small>Boas práticas</small>
+          </div>
+          <ul>
+            <li><span class="material-icons">check_circle</span> Utilize títulos curtos e marcantes.</li>
+            <li><span class="material-icons">check_circle</span> Informe o estoque real para evitar rupturas.</li>
+            <li><span class="material-icons">check_circle</span> Mantenha descrições objetivas e diretas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Salvar alterações</button>
+        <a class="btn ghost" routerLink="/product-list">Cancelar</a>
+      </div>
+    </form>
+  </section>
+</div>
 </ion-content>

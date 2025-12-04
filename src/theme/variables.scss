@@ -32,12 +32,4 @@
   --ion-item-background: #ffffff;
 }
 
-/* DARK MODE — compatível com iOS */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ion-background-color: #0f172a;
-    --ion-text-color: #f8fafc;
-    --ion-toolbar-background: #152238;
-    --ion-item-background: #1e293b;
-  }
-}
+/* Dark mode desativado para manter a paleta personalizada */
